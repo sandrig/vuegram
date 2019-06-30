@@ -1,5 +1,6 @@
-let path = require('path');
-let webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   entry: './src/index.js',
@@ -58,7 +59,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: '/node_modules/'
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -69,6 +70,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new VueLoaderPlugin(),
+  ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
