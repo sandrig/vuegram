@@ -1,29 +1,50 @@
 <template>
   <div class="phone-body">
-    <div class="feed">
-      <vuegram-post v-for="post in posts"
+    <div v-if="step === 1" class="feed">
+      <vuegram-post
+        v-for="post in posts"
         :post="post"
-        :key="posts.indexOf(post)">
+        :key="posts.indexOf(post)"
+      >
       </vuegram-post>
+    </div>
+    <div v-if="step === 2">
+      <div
+        class="selected-image"
+        :style="{ backgroundImage: 'url(' + image + ')' }"
+      ></div>
+      <div class="filter-container">
+        <filter-type
+          v-for="filter in filters"
+          :filter="filter"
+          :image="image"
+          :key="filters.indexOf(filter)"
+        >
+        </filter-type>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import VuegramPost from "./VuegramPost";
+import VuegramPost from './VuegramPost';
+import FilterType from './FilterType';
 
-  export default {
-    name: "PhoneBody",
-    props: {
-      posts: Array,
-      filters: Array
-    },
-    components: {
-      "vuegram-post": VuegramPost
-    }
-  };
+export default {
+  name: 'PhoneBody',
+  props: {
+    step: Number,
+    posts: Array,
+    filters: Array,
+    image: String,
+  },
+  components: {
+    'vuegram-post': VuegramPost,
+    'filter-type': FilterType,
+  },
+};
 </script>
 
 <style lang="scss" src="../styles/phone-body.scss">
-  // Styles from stylesheet
+// Styles from stylesheet
 </style>
