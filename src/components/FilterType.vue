@@ -1,28 +1,29 @@
 <template>
   <div class="filter-type">
-    <p>{{filter.name}}</p>
-    <div class="img"
+    <p>{{ filter.name }}</p>
+    <div
+      class="img"
       :class="filter.name"
       :style="{ backgroundImage: 'url(' + image + ')' }"
-      @click="selectFilter">
-    </div>
+      @click="selectFilter"
+    ></div>
   </div>
 </template>
 
 <script>
-import EventBus from "../event-bus.js";
+import EventBus from '../event-bus.js';
 
 export default {
-  name: "FilterType",
+  name: 'FilterType',
   props: {
     filter: Object,
-    image: String
+    image: String,
   },
   methods: {
     selectFilter() {
-      EventBus.$emit("filter-selected", { filter: this.filter.name });
-    }
-  }
+      EventBus.$emit('filter-selected', { filter: this.filter.name });
+    },
+  },
 };
 </script>
 

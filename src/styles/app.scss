@@ -9,7 +9,7 @@ body,
   margin: 0;
   overflow: hidden;
   background: #e6ecf1;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 #app {
@@ -129,7 +129,7 @@ body,
     }
   }
 
-  input[name="file"] {
+  input[name='file'] {
     visibility: hidden;
   }
 
