@@ -11,6 +11,7 @@
     <div v-if="step === 2">
       <div
         class="selected-image"
+        :class="selectedFilter"
         :style="{ backgroundImage: 'url(' + image + ')' }"
       ></div>
       <div class="filter-container">
@@ -37,6 +38,7 @@ export default {
     posts: Array,
     filters: Array,
     image: String,
+    selectedFilter: String,
   },
   components: {
     'vuegram-post': VuegramPost,
