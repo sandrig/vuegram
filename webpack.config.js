@@ -3,11 +3,13 @@ const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    app: './src/index.js',
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    publicPath: '/dist',
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -92,7 +94,6 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map';
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
